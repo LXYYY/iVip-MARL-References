@@ -1,0 +1,157 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{amsfonts,amssymb}
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{leftidx}
+\usepackage{enumerate}
+\usepackage{paralist}
+\usepackage{subfigure}
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+
+
+\begin{document}
+
+\title{Review on Formation Control and Motion Planning for Multi Agents}
+\author{Liu Xiangyu}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+The purpose of this article is to briefly introduce the related work on formation control and motion planning for multi agents, for a quick start on our research on formation control via reinforcement learning. In this review, complicated mathmatical details are omitted since detailed mathmatical deduction is not in the scope of this review. 
+
+The organisation of this review is as follows. Section 2,3 and 4 are basically a brief version of the survey of Liu in \cite{liu_bucknall_2018}. Section 5 reviewed some recent works on formation control algorithms using reinforcement learning.
+
+\section{Relationship between Formation Control and Cooperative Motion Planning }
+
+Relationship is illustrated in Figure \ref{fig:CompFcCmp}, details later.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{WX20200510-222400@2x.png}
+	\caption{Comparison of formation control and cooperative motion planning \cite{liu_bucknall_2018}.}
+	\label{fig:CompFcCmp} 
+\end{figure}
+
+\section{Formation Control}
+
+\subsection{System Architecture of Multi Agents Formation}
+
+A generic hierarchical architecture formation system is proposed by Liu and Bucknall in \cite{LIU2015126}. The system is displayed in Figure \ref{fig:FormationSystemArchitecture}, which consists of three layers, i.e. Task Management Layer, Path Planning Layer and Task Execution Layer. According to Liu and Bucknall, the first layer Task Management Layer allocates mission to indivisual vehicles based upon the critiria of maximum overall performance and minimum mission time. In other words, this layer analyzes the mission, which can be defined as a set of waypoints including starting and ending points, and design a proper formation shape, and allocate the formation information to each vehicle.
+
+The Path Planning Layer is comprised of three sub modules, which can concluded as,
+
+\begin{compactenum}
+	\item Cooperative path planning module. This is the core of the system, determining the optimised path for each vehicle.
+	\item Real-time trajectory modification module. The calculated optimised path is furthur modificated in this module considering the uncertainties in practical applications.
+	\item Data acquisition module.
+\end{compactenum}
+
+The last module i.e. Task Execution Layer is the execution layer that directly connects to the controllers of vehicles. And execution results are fed back to upper layer to generate a closed loop control.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{FormationSystemArchitecture.png}
+	\caption{A formationc control architecture.}
+	\label{fig:FormationSystemArchitecture} 
+\end{figure}
+
+\subsection{System Patterns of Formation}
+
+Based on Campbell et al. \cite{campbell2012review}, as demonstrated in Figure \ref{fig:patternsformation}, four shapes are commonly used:
+
+\begin{compactenum}
+	\item Column shape, gives a wide mission area.
+	\item Line shape, forms a small mission area but useful in highly constrained environments.
+	\item V shape, suitable in normal operations, offers a good view of the surroundings, and easy and direct communication can be eastablished between vehicles.
+	\item Diamond shape, a variation of V shape, also frequently used in normal operations.
+\end{compactenum}
+
+As mentioned in \cite{liu_bucknall_2018}, there are no particular restrictions on the choice of formation shape. The shape is determined by the task management layer, and should be deformable during tasks, e.g. deform and reform into another shape when trying to enter a narrow area.
+
+In addition, when formation shape change is occurring, the formation control strategy should consider the following additional constraints: 
+
+\begin{compactenum}
+	\item Inter-vehicle collision avoidance,
+	\item Coordinating of multiple vehicles, i.e. avoid the situation waiting or fully stop due to vehicles lagging behind.
+	\item Avoiding deadlock situation, vehicles should not block others' paths.
+\end{compactenum}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{patternsformation.png}
+	\caption{Patterns of formation.}
+	\label{fig:patternsformation} 
+\end{figure}
+
+\subsection{Review of formation control strategies}
+
+Also as summarised in \cite{liu_bucknall_2018}, there exist three main types of formation maintaince according to different travel scenarios, as displayed in Figure \ref{fig:3typesformationmaintenance}:
+
+\begin{compactenum}
+	\item Formation generation and maintenance (Type1), the formation is formed when vehicles are located at random positions with arbitrary headings. Once attained, the shape needs to be maintained to continue the mission.
+	\item Formation maintenance during trajectory tracking (Type 2), formation needs to be rigorously maintained while following a predefined trajectory.
+	\item Formation shape variation and re-generation (Type 3), the formationshape is maintained as defined in Type2, but the shape also requires adjustment and re-generation while avoiding obsracles.
+\end{compactenum}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{3typesformationmaintenance.png}
+	\caption{Three different types of formation shape maintenance. (a) Formation generation and maintenance. (b) Formation maintenance while tracking trajectory. (c) Formation shape variation and re-generation.}
+	\label{fig:3typesformationmaintenance} 
+\end{figure}
+
+Three methods have been proposed to achieve formation achieve formation maintenance, 
+
+\begin{compactenum}
+	\item leader-follower. One vehicle is regarded as the group leader with full access to the overall navigation information and works as the reference vehicle in the formation. The leader could be virtual in some cases.
+	\item virtual structure. In this method, formation shape is treated as a virtual structure or a rigid body. Then the formation is maintained by minimising the position error between the virtual structure and actual formation position.
+	\item behaviour-based methods. Control commands are based on various kinds of formation missions e.g. move-to-goal, avoid-static-obstacle, avoid-robot and maintain-formation. And a weight vector are assigned to each kind of command to generate the final control scheme.
+\end{compactenum}
+
+Among three methods, leader-follower is the most widely adopted strategy, due to its simple design and implementation. 
+While virtual structure method provides better performance in formation maintenance, but with limited capability to deal with collision avoidance since it has no flexibility to adjust the shape. 
+The behaviour-based method is most adoptable approach, but lacks system stability analysis, making it unsuitable for large scale utilisation. 
+The differences between methods are shown in Figure \ref{fig:diffformationmethods}. 
+
+For future research, a hybrid control strategy appears to be the trend, also fault-tolerant formation control, i.e. capable of dealing with situations when the formation fails.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=7in]{diffformationmethods.png}
+	\caption{Comparison of formation control strategies.}
+	\label{fig:diffformationmethods} 
+\end{figure}
+
+\section{Cooperative Formation Path Planning}
+
+write this section later.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{compsinglemultipathplanning.png}
+	\caption{Comparison of optimisation objectives of single and multi agent path planning.}
+	\label{fig:compsinglemultipathplanning} 
+\end{figure}
+
+\section{Formation Control using Reinforcement Learning}
+
+\input{leaderfollowerusinggqrl2017}
+\input{IntelligentFormationControl2018}
+\input{multirobotfc2020}
+
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{../iVip_ref}
+
+\end{document}

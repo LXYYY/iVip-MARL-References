@@ -1,0 +1,79 @@
+\begin{thebibliography}{10}
+
+\bibitem{liu_bucknall_2018}
+Y.~Liu and R.~Bucknall, ``A survey of formation control and motion planning of
+  multiple unmanned vehicles,'' {\em Robotica}, vol.~36, no.~7, pp.~1019--1047,
+  2018.
+
+\bibitem{LIU2015126}
+Y.~Liu and R.~Bucknall, ``Path planning algorithm for unmanned surface vehicle
+  formations in a practical maritime environment,'' {\em Ocean Engineering},
+  vol.~97, pp.~126 -- 144, 2015.
+
+\bibitem{campbell2012review}
+S.~Campbell, W.~Naeem, and G.~W. Irwin, ``A review on improving the autonomy of
+  unmanned surface vehicles through intelligent collision avoidance
+  manoeuvres,'' {\em Annual Reviews in Control}, vol.~36, no.~2, pp.~267--283,
+  2012.
+
+\bibitem{knopp2017formation}
+M.~Knopp, C.~Ayk{\i}n, J.~Feldmaier, and H.~Shen, ``Formation control using gq
+  ($\lambda$) reinforcement learning,'' in {\em 2017 26th IEEE International
+  Symposium on Robot and Human Interactive Communication (RO-MAN)},
+  pp.~1043--1048, IEEE, 2017.
+
+\bibitem{aykin2018deep}
+C.~Aykin, M.~Knopp, and K.~Diepold, ``Deep reinforcement learning for formation
+  control,'' in {\em 2018 27th IEEE International Symposium on Robot and Human
+  Interactive Communication (RO-MAN)}, pp.~1--5, IEEE, 2018.
+
+\bibitem{maei2010gq}
+H.~R. Maei and R.~S. Sutton, ``Gq (lambda): A general gradient algorithm for
+  temporal-difference prediction learning with eligibility traces,'' in {\em 3d
+  Conference on Artificial General Intelligence (AGI-2010)}, Atlantis Press,
+  2010.
+
+\bibitem{johns2018intelligent}
+R.~J. Johns, ``Intelligent formation control using deep reinforcement
+  learning,'' 2018.
+
+\bibitem{balch1998behavior}
+T.~Balch and R.~C. Arkin, ``Behavior-based formation control for multirobot
+  teams,'' {\em IEEE transactions on robotics and automation}, vol.~14, no.~6,
+  pp.~926--939, 1998.
+
+\bibitem{dhariwal2017openai}
+P.~Dhariwal, C.~Hesse, O.~Klimov, A.~Nichol, M.~Plappert, A.~Radford,
+  J.~Schulman, S.~Sidor, Y.~Wu, and P.~Zhokhov, ``Openai baselines,'' 2017.
+
+\bibitem{brockman2016openai}
+G.~Brockman, V.~Cheung, L.~Pettersson, J.~Schneider, J.~Schulman, J.~Tang, and
+  W.~Zaremba, ``Openai gym,'' {\em arXiv preprint arXiv:1606.01540}, 2016.
+
+\bibitem{rawat2020multi}
+A.~Rawat and K.~Karlapalem, ``Multi-robot formation control using reinforcement
+  learning,'' {\em arXiv preprint arXiv:2001.04527}, 2020.
+
+\bibitem{foerster2018counterfactual}
+J.~N. Foerster, G.~Farquhar, T.~Afouras, N.~Nardelli, and S.~Whiteson,
+  ``Counterfactual multi-agent policy gradients,'' in {\em Thirty-second AAAI
+  conference on artificial intelligence}, 2018.
+
+\bibitem{lowe2017multi}
+R.~Lowe, Y.~I. Wu, A.~Tamar, J.~Harb, O.~P. Abbeel, and I.~Mordatch,
+  ``Multi-agent actor-critic for mixed cooperative-competitive environments,''
+  in {\em Advances in neural information processing systems}, pp.~6379--6390,
+  2017.
+
+\bibitem{andrychowicz2017hindsight}
+M.~Andrychowicz, F.~Wolski, A.~Ray, J.~Schneider, R.~Fong, P.~Welinder,
+  B.~McGrew, J.~Tobin, O.~P. Abbeel, and W.~Zaremba, ``Hindsight experience
+  replay,'' in {\em Advances in neural information processing systems},
+  pp.~5048--5058, 2017.
+
+\bibitem{hendrickx2005rigidity}
+J.~M. Hendrickx, B.~D. Anderson, and V.~D. Blondel, ``Rigidity and persistence
+  of directed graphs,'' in {\em Proceedings of the 44th IEEE Conference on
+  Decision and Control}, pp.~2176--2181, IEEE, 2005.
+
+\end{thebibliography}
